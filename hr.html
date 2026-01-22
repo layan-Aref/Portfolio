@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Version</title>
+  <link rel="stylesheet" href="hr-style.css" />
+</head>
+
+<body>
+  <div class="hr-page">
+
+    <!-- HERO -->
+    <header class="hero visible" data-animate data-hero>
+      <h1>Layan Aref Rihani</h1>
+      <p class="title">Frontend Developer • Flutter & React.js</p>
+
+      <p class="intro">
+        Frontend developer with 2.5+ years of experience building clean,
+        user-focused mobile and web applications.
+      </p>
+
+      <div class="actions">
+        <a href="cv/Layan_Rihani_CV.pdf" download class="btn">Download CV</a>
+        <a href="mailto:layanaref22@gmail.com" class="link">Contact Me</a>
+      </div>
+    </header>
+
+    <section class="section" data-animate>
+      <h2>Summary</h2>
+      <p>
+        Experienced in Flutter and React.js with a strong focus on clean
+        architecture, REST API integration, and intuitive UI.
+      </p>
+    </section>
+
+    <section class="section grid" data-animate>
+      <div>
+        <h2>Education</h2>
+        <p>
+          <strong>B.Sc. in Informatics Engineering</strong><br />
+          Damascus University<br />
+          <span class="muted">2020 – Present</span>
+        </p>
+      </div>
+
+      <div>
+        <h2>Skills</h2>
+        <ul class="list">
+          <li>Flutter, React.js</li>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Dart, Java, C++</li>
+          <li>REST APIs, Responsive UI</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" data-animate>
+      <h2>Experience</h2>
+      <p class="role">Freelance Mobile Application Developer</p>
+      <span class="muted">Syria • 2025 – Present</span>
+
+      <ul class="list">
+        <li>Built healthcare platform connecting doctors, patients, and pharmacies.</li>
+        <li>Implemented real-time pharmacy availability and service modules.</li>
+        <li>Focused on usability, performance, and clean UX.</li>
+      </ul>
+    </section>
+
+    <section class="section" data-animate>
+      <h2>Projects</h2>
+
+      <p><strong>Tafawuq Institute App</strong> — Flutter (2025)</p>
+      <p class="muted">Student portal for courses, grades, payments, announcements.</p>
+
+      <p><strong>Job Opportunities Finder</strong> — React.js (2024)</p>
+      <p class="muted">Job-matching platform with direct applications.</p>
+    </section>
+
+    <footer class="footer" data-animate>
+      <span>Damascus, Syria</span>
+      <span>•</span>
+      <span>layanaref22@gmail.com</span>
+      <span>•</span>
+      <a href="https://gitlab.com/layan_aref" target="_blank">GitLab</a>
+    </footer>
+  </div>
+
+  <!-- JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const elements = document.querySelectorAll("[data-animate]");
+
+      if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        elements.forEach(el => el.classList.add("visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              entry.target.style.transitionDelay = `${index * 80}ms`;
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      elements.forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
